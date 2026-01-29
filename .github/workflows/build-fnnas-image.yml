@@ -79,6 +79,7 @@ on:
           - leez
           - lx-r3s
           - lz-k3568
+          - maybe-transpeed8K
           - mrkaio-m68s
           - nanopc-t6
           - nanopi-m5
@@ -246,7 +247,7 @@ on:
         options:
           - ophub
           - angel
-          - yourname
+          - Aihuangshu
 
 env:
   TZ: Etc/UTC
