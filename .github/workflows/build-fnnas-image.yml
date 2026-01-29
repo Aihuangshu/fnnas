@@ -428,6 +428,9 @@ jobs:
       - name: Packaging fnnas
         if: ${{ steps.down.outputs.status == 'success' && !cancelled() }}
         uses: ophub/fnnas@main
+        env:
+          KERNEL_TAGS: ${{ env.KERNEL_TAGS }}
+          KERNEL_REPO: ${{ env.KERNEL_REPO }}
         with:
           fnnas_path: fnnas/*.img.xz
           fnnas_board: ${{ inputs.fnnas_board }}
