@@ -217,6 +217,7 @@ on:
         type: choice
         options:
           - ophub/fnnas
+          - Aihuangshu/fnnas
       fnnas_kernel:
         description: "Select fnnas kernel version"
         required: false
@@ -409,28 +410,15 @@ jobs:
 
           # Add directory links
           ln -sf /builder/fnnas ${{ github.workspace }}/fnnas
-          ln -sf /builder/fnnas /home/runner/work/_actions/ophub/fnnas/main/fnnas
+          ln -sf /builder/fnnas /home/runner/work/_actions/Aihuangshu/fnnas/main/fnnas
 
           echo "build_tag=${build_tag}" >> ${GITHUB_ENV}
           echo "status=success" >> ${GITHUB_OUTPUT}
 
 
-      - name: Init kernel tags
-        shell: bash
-        run: |
-          if [[ "${{ inputs.auto_kernel }}" == "true" ]]; then
-            echo "KERNEL_TAGS=latest" >> $GITHUB_ENV
-          else
-            echo "KERNEL_TAGS=${{ inputs.fnnas_kernel }}" >> $GITHUB_ENV
-          fi
-          echo "KERNEL_REPO=${{ inputs.kernel_repo }}" >> $GITHUB_ENV
-
       - name: Packaging fnnas
         if: ${{ steps.down.outputs.status == 'success' && !cancelled() }}
-        uses: ophub/fnnas@main
-        env:
-          KERNEL_TAGS: ${{ env.KERNEL_TAGS }}
-          KERNEL_REPO: ${{ env.KERNEL_REPO }}
+        uses: Aihuangshu/fnnas@main
         with:
           fnnas_path: fnnas/*.img.xz
           fnnas_board: ${{ inputs.fnnas_board }}
