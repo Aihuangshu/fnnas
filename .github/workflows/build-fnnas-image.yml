@@ -200,6 +200,7 @@ on:
           - tpm312
           - tqc-a01
           - tvi3315a
+          - transpeed-m98-8k-p
           - vplus
           - wocyber-a3
           - wxy-oect
@@ -408,14 +409,14 @@ jobs:
 
           # Add directory links
           ln -sf /builder/fnnas ${{ github.workspace }}/fnnas
-          ln -sf /builder/fnnas /home/runner/work/_actions/ophub/fnnas/main/fnnas
+          ln -sf /builder/fnnas /home/runner/work/_actions/Aihuangshu/fnnas/main/fnnas
 
           echo "build_tag=${build_tag}" >> ${GITHUB_ENV}
           echo "status=success" >> ${GITHUB_OUTPUT}
 
       - name: Packaging fnnas
         if: ${{ steps.down.outputs.status == 'success' && !cancelled() }}
-        uses: ophub/fnnas@main
+        uses: Aihuangshu/fnnas@main
         with:
           fnnas_path: fnnas/*.img.xz
           fnnas_board: ${{ inputs.fnnas_board }}
