@@ -214,10 +214,10 @@ on:
       kernel_repo:
         description: "Set fnnas kernel repository"
         required: false
-        default: "ophub/fnnas"
+        default: "/fnnas"
         type: choice
         options:
-          - ophub/fnnas
+          - /fnnas
       fnnas_kernel:
         description: "Select fnnas kernel version"
         required: false
@@ -243,10 +243,10 @@ on:
       builder_name:
         description: "Set fnnas builder signature"
         required: false
-        default: "ophub"
+        default: ""
         type: choice
         options:
-          - ophub
+          - 
           - angel
           - yourname
 
@@ -410,7 +410,7 @@ jobs:
 
           # Add directory links
           ln -sf /builder/fnnas ${{ github.workspace }}/fnnas
-          ln -sf /builder/fnnas /home/runner/work/_actions/ophub/fnnas/main/fnnas
+          ln -sf /builder/fnnas "/home/runner/work/_actions/${{ github.repository_owner }}/fnnas/main/fnnas"
 
           echo "build_tag=${build_tag}" >> ${GITHUB_ENV}
           echo "status=success" >> ${GITHUB_OUTPUT}
