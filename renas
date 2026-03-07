@@ -107,7 +107,7 @@ uboot_meson_gxbb=("p201.bin" "s905.bin")
 make_board="all"
 # Set fnnas firmware size (Unit: MiB, boot_mb >= 512, root_mb >= 6144)
 boot_mb="512"
-root_mb="7168"
+root_mb="6144"
 # Set automatic expansion size for the system root partition (Unit: GiB)
 rootfs_expand="16"
 # Set fnnas builder signature
