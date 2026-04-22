@@ -229,10 +229,10 @@ on:
       kernel_repo:
         description: "Set fnnas kernel repository"
         required: false
-        default: "ophub/fnnas"
+        default: "/fnnas"
         type: choice
         options:
-          - ophub/fnnas
+          - /fnnas
       fnnas_kernel:
         description: "Select fnnas kernel version"
         required: false
@@ -257,10 +257,10 @@ on:
       builder_name:
         description: "Set fnnas builder signature"
         required: false
-        default: "ophub"
+        default: ""
         type: choice
         options:
-          - ophub
+          - Aihuangshu
           - angel
           - yourname
 
@@ -430,7 +430,7 @@ jobs:
 
       - name: Package FnNAS for target boards
         if: ${{ steps.down.outputs.status == 'success' && !cancelled() }}
-        uses: ophub/fnnas@main
+        uses: Aihuangshu/fnnas@main
         with:
           fnnas_path: fnnas/*.img.xz
           fnnas_board: ${{ inputs.fnnas_board }}
